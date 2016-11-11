@@ -5,12 +5,12 @@ void setup() {
   Serial.begin (9600);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-  pinMode(4, OUTPUT);
-  pinMode(6, OUTPUT);      // sets the digital pin as output
-  pinMode(9, OUTPUT);
-  pinMode(7, OUTPUT);
-  pinMode(8, OUTPUT);
-  pinMode(2, INPUT);
+  pinMode(4, OUTPUT);       // stop motor  2 
+  pinMode(6, OUTPUT);      // motor 2 reverse
+  pinMode(9, OUTPUT);      // motor 1 reverse
+  pinMode(7, OUTPUT);     //  motor 2 forward
+  pinMode(8, OUTPUT);      // motor 1 forward
+  pinMode(2, INPUT);      // 
 }
 void loop() {
   digitalWrite(4, HIGH);
@@ -25,12 +25,12 @@ void loop() {
   digitalWrite(trigPin, LOW);
   duration = pulseIn(echoPin, HIGH);
   distance = (duration/2) / 29.1;
-  if (distance < 4 || k>  5) {  
+  if (distance < 20 || k < 10) {  
   digitalWrite(6, LOW);   // slow down the wheel
   digitalWrite(9, LOW);   // slow down the wheel
   delay(100);
-  digitalWrite(7, HIGH);   // sets the wheel forward
-  digitalWrite(8, HIGH);   // sets the wheel forward
+  digitalWrite(7, LOW);   // sets the wheel forward
+  digitalWrite(8, LOW);   // sets the wheel forward
 }
   else {
   digitalWrite(7, LOW);   // slow down the wheel
